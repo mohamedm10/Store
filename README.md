@@ -1,5 +1,5 @@
 # Store
-## Description (Underline)
+## Description
 - A store Management app built as the final project at Byte Academy bootcamp
 
 #### Technolgies and Languages Used
