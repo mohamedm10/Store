@@ -1,4 +1,4 @@
-#  [Heading link](https://github.com/mohamedm10/Store "Store Project")
+#  [Store Project](https://github.com/mohamedm10/Store "Store Project")
 ## Description
 - A store Management app built as the final project at Byte Academy bootcamp
 
