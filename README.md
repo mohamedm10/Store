@@ -10,3 +10,7 @@
 * Javascript
 * Bootstrap
 * JQuery
+
+### Skills Mastered
+- [x] Database Design
+- [x] JS DOM manipulation
