@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %} login {% endblock %}
+
+{% block body %}
+
+<div id="page-container" class="side-trans-enabled">
+
+   
+        <!-- Page Content -->
+        <div class="bg-image" style="background-image: url({% static 'assets/media/photos/photo28@2x.jpg' %});">
+            <div class="row no-gutters bg-primary-dark-op">
+                <!-- Meta Info Section -->
+                <div class="hero-static col-lg-4 d-none d-lg-flex flex-column justify-content-center">
+                    <div class="p-4 p-xl-5 flex-grow-1 d-flex align-items-center">
+                        <div class="w-100">
+                          
+                            <p class="text-white-75 mr-xl-8 mt-2">
+                                Welcome to your amazing app. Feel free to login and start managing your products and clients.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-4 p-xl-5 d-xl-flex justify-content-between align-items-center font-size-sm">
+                        <p class="font-w500 text-white-50 mb-0">
+                            <strong>Inventory</strong> © <span data-toggle="year-copy" class="js-year-copy-enabled">2022</span>
+                        </p>
+                        <ul class="list list-inline mb-0 py-2">
+                            <li class="list-inline-item">
+                                <a class="text-white-75 font-w500" href="javascript:void(0)">Link</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!-- END Meta Info Section -->
+
+                <!-- Main Section -->
+                <div class="hero-static col-lg-8 d-flex flex-column align-items-center bg-white">
+                    <div class="p-3 w-100 d-lg-none text-center">
+                        
+                    </div>
+                    <div class="p-4 w-100 flex-grow-1 d-flex align-items-center">
+                        <div class="w-100">
+                            <!-- Header -->
+                            <div class="text-center mb-5">
+                                <p class="mb-3">
+                                    <i class="fa fa-2x fa-circle-notch text-primary-light"></i>
+                                </p>
+                                <h1 class="font-w700 mb-2">
+                                    Sign In
+                                </h1>
+                                <h2 class="font-size-base text-muted">
+                                    Welcome, please login to your account.
+                                </h2>
+                            </div>
+                            <!-- END Header -->
+
+                            <!-- Sign In Form -->
+                            <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.min.js which was auto compiled from _js/pages/op_auth_signin.js) -->
+                            <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                            <div class="row no-gutters justify-content-center">
+                                <div class="col-sm-8 col-xl-4">
+                                    <form class="js-validation-signin" action="{% url 'users:login' %}" method="POST" novalidate="novalidate">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg form-control-alt py-4" id="login-username" name="username" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-lg form-control-alt py-4" id="login-password" name="password" placeholder="Password">
+                                        </div>
+                                        <div class="form-group d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <a class="text-muted font-size-sm font-w500 d-block d-lg-inline-block mb-1" href="#">
+                                                  
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn btn-lg btn-alt-primary">
+                                                    <i class="fa fa-fw fa-sign-in-alt mr-1 opacity-50"></i> Sign In
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- END Sign In Form -->
+                        </div>
+                    </div>
+                    <div class="px-4 py-3 w-100 d-lg-none d-flex flex-column flex-sm-row justify-content-between font-size-sm text-center text-sm-left">
+                       
+                        <ul class="list list-inline py-2 mb-0">
+                            <li class="list-inline-item">
+                                <a class="text-muted font-w500" href="javascript:void(0)">Link</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!-- END Main Section -->
+            </div>
+        </div>
+        <!-- END Page Content -->
+</div>
+    
+{% endblock %}

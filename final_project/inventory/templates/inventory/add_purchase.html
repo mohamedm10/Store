@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %} Add-Purchase {% endblock %}
+
+{% block script %}
+<script>
+    function showPrice(productId,priceId) {
+
+        fetch(`fetch_price/${productId}`)
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector(`#price${priceId}`).value = data;
+        })
+    }
+    // event handler for html element select of products
+    function show (val) {
+        let priceId = val.slice(-1);
+        console.log(priceId);
+        console.log(val);
+
+        let product = document.querySelector(`#${val}`);
+        showPrice(product.value,priceId);
+        
+     }
+    
+</script>
+    
+{%endblock%}
+
+{% block body %}
+<div class="container">
+    <form method="POST" id="purchase-form">
+        {% csrf_token %}
+        <div class="d-flex flex-column align-items-center">
+            <div class="form-group w-25">
+                <label> Customer:</label>
+                <select class="form-control" name="customer">
+                    <option value="">------</option>
+                    {% for customer in customers %}
+                        <option value="{{customer.id}}">{{customer}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <div class="form-group w-25">
+                <label> Discount:</label>
+                <input class="form-control" type="number" name="discount">
+            </div>
+    
+            <div class="form-group w-25">
+                <label> Date:</label>
+                <input class="form-control" type="datetime" name="date" value="{{now}}" disabled>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-between border rounded p-3" id="purchase-items0">
+            <div class="form-group w-25">
+                <label>Product:</label>
+                <select class="form-control" onchange="show(this.id)" name="product" id="product-selection0">
+                    <option value="">------</option>
+                    {% for product in products %}
+                        <option value="{{product.id}}">{{product.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group w-25">
+                <label>Qty:</label>
+                <input class="form-control" type="number" name="qty" id="quantity">
+            </div>
+    
+            <div class="form-group w-25">
+                <label>Price:</label>
+                <input class="form-control" type="number" id="price0" placeholder="price" disabled>
+            </div>
+            <button class="btn-sm btn-success my-4" id="add-clone0">Add</button>
+        </div>
+        
+        <div class="form-group w-25 mt-3">
+            <input class="btn btn-success" type="submit">
+        </div>
+        
+    </form>
+
+</div>
+   
+{% endblock %}

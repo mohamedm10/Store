@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block title %} purchases {% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <div class="form-group form-row">
+      <div class="col-3">
+        <h3>Purchase Id</h3>
+        <input class="form-control" type="text" disabled value="{{purchase}}" >
+      </div>
+      
+    </div>
+    <div class="form-group form-row">
+      <div class="col-3">
+        <h3>Customer </h3>
+        <!-- <input class="form-control" type="text" name="firstname" value="{{items.0.purchase.customer.firstname}}"> -->
+        
+        <select class="form-control" name="firstname">
+          <option value="{{items.0.purchase.customer.firstname}}">{{items.0.purchase.customer.firstname}}</option>
+          {% for customer in customers %}
+            {% if customer != items.0.purchase.customer %}
+              <option value="{{customer}}">{{customer.firstname}}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+
+      </div>
+      
+    </div>
+
+    <div class="form-group form-row">
+      <div class="col-3">
+        <h3>Date </h3>
+        <input class="form-control" type="text" name="lastname" value="{{items.0.purchase.date}}">
+      </div>
+      
+    </div>
+
+    <div class="form-group form-row">
+      <div class="col-3">
+        <h3>Discount: {{items.0.purchase.discount}}</h3>
+      </div>
+    </div> 
+    <div class="form-group">
+      <input class="btn btn-success"type="submit" value="Save Changes">
+    </div>
+    
+  </form>
+
+      <div class="row">
+      
+      <div class="col-md-6 col-xl-4">
+        <a class="block block-rounded block-link-rotate" href="#">
+            <div class="block-header">
+                <h3 class="block-title">Items</h3>
+            </div>
+            <div class="block-content">
+              <ol>
+                {% for item in items %}
+                
+                  <li>
+                    <ul class="fa-ul">
+                      <li>
+                        <span class="fa-li">
+                          <i class="fa fa-arrow-right"></i>
+                      </span>
+                        Product: {{item.product.name}}
+                      </li>
+                      <li>
+                        <span class="fa-li">
+                          <i class="fa fa-arrow-right"></i>
+                        </span>
+                        Selling Price: {{item.unit_price}}
+                      </li>
+                      <li>
+                        <span class="fa-li">
+                          <i class="fa fa-arrow-right"></i>
+                      </span>
+                        Qty: {{item.qty}}
+                      </li>
+                      <li>
+                        <span class="fa-li">
+                          <i class="fa fa-arrow-right"></i>
+                      </span>
+                        Amount: {{item.amount}}
+                      </li>
+                    </ul>
+                  </li>
+                  <br>
+                {% endfor %}
+                </ol>
+            </div>
+        </a>
+    </div>
+      </div>
+      
+      
+
+  <a href="{% url 'inventory:purchases' %}">back to all purchases</a>
+</div>
+  
+{% endblock %}

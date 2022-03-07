@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="{% static '/assets/media/favicons/favicon.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static '/assets/media/favicons/favicon-192x192.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/assets/media/favicons/apple-touch-icon-180x180.png' %}">
+    <!-- END Icons -->
+
+    <!-- Stylesheets -->
+    <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="{% static '/assets/js/plugins/datatables/dataTables.bootstrap4.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css' %}">
+    
+    <!-- Fonts and OneUI framework -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" id="css-main" href="{% static '/assets/css/oneui.min.css' %}">
+
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="{% static '/assets/css/themes/amethyst.min.css' %}"> -->
+    <!-- END Stylesheets --> 
+
+    <link rel="stylesheet" href="{% static 'inventory/style.css' %}">
+     
+    <title>
+        {% block title %} Document {% endblock %}
+    </title> 
+</head>
+<body>
+    {% include 'navbar.html' %}
+    
+    {% include 'hero.html' %}
+    
+    {% block body %}
+    
+    {% endblock %}
+    
+    <!-- Custom Js file -->
+    <script src="{% static 'inventory/js/app.js' %}"></script>
+    {% block script %} {% endblock %}
+    <!--
+        OneUI JS Core
+        
+        Vital libraries and plugins used in all pages. You can choose to not include this file if you would like
+        to handle those dependencies through webpack. Please check out assets/_js/main/bootstrap.js for more info.
+        
+            If you like, you could also include them separately directly from the assets/js/core folder in the following
+            order. That can come in handy if you would like to include a few of them (eg jQuery) from a CDN.
+
+            assets/js/core/jquery.min.js
+            assets/js/core/bootstrap.bundle.min.js
+            assets/js/core/simplebar.min.js
+            assets/js/core/jquery-scrollLock.min.js
+            assets/js/core/jquery.appear.min.js
+            assets/js/core/js.cookie.min.js
+        -->
+        <script src="{% static '/assets/js/oneui.core.min.js' %}"></script>
+
+        <!--
+            OneUI JS
+
+            Custom functionality including Blocks/Layout API as well as other vital and optional helpers
+            webpack is putting everything together at assets/_js/main/app.js
+        -->
+        <script src="{% static '/assets/js/oneui.app.min.js' %}"></script>
+
+        <!-- Page(s) JS Plugins -->
+        <script src="{% static '/assets/js/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static '/assets/js/plugins/datatables/dataTables.bootstrap4.min.js' %}"></script>
+        <script src="{% static '/assets/js/plugins/datatables/buttons/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static '/assets/js/plugins/datatables/buttons/buttons.print.min.js' %}"></script>
+        <script src="{% static '/assets/js/plugins/datatables/buttons/buttons.html5.min.js' %}"></script>
+        <script src="{% static '/assets/js/plugins/datatables/buttons/buttons.flash.min.js' %}"></script>
+        <script src="{% static '/assets/js/plugins/datatables/buttons/buttons.colVis.min.js' %}"></script>
+        <script src="{% static '/assets/js/plugins/jquery-validation/jquery.validate.min.js' %}"></script>
+
+        <!-- Page(s) JS Code -->
+        <script src="{% static '/assets/js/pages/be_tables_datatables.min.js' %}"></script>
+        <script src="{% static '/assets/js/pages/op_auth_signin.min.js' %}"></script>
+</body>
+</html>

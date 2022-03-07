@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %} products {% endblock %}
+
+{% block body %}
+<div class="container">
+  <form action="" method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    
+    {{form}}
+  
+    <div class="form-group">
+      <input class="btn btn-success" type="submit" value="Save Changes">
+    </div>
+    
+  </form>
+
+    <img src="{{form.instance.image.url}}" style="max-width:200px; max-height:300px" class="float-right">
+     
+  <a href="{% url 'inventory:products' %}">back to all products</a>
+</div>
+ 
+{% endblock %}

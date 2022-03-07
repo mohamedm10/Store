@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %} customer {% endblock %}
+
+{% block body %}
+<div class="container">
+  <form action="" method="POST" >
+    {% csrf_token %}
+  
+    {{form}}
+    
+    <input class="btn btn-success" type="submit" value="Save Changes">  
+  </form>
+     
+
+  <a href="{% url 'inventory:customers' %}">back to all customers</a>
+</div>
+ 
+{% endblock %}

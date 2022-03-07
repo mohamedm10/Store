@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block header %} Home {% endblock %}
+
+{% block body %}
+ 
+    <!-- Page Content -->
+    <div class="content content-boxed">
+        <!-- Invoice -->
+        <div class="block block-rounded">
+            <div class="block-header">
+                <h3 class="block-title">#INV{{purchase_id}}</h3>
+                <div class="block-options">
+                    <!-- Print Page functionality is initialized in Helpers.print() -->
+                    <button type="button" class="btn-block-option" onclick="One.helpers('print');">
+                        <i class="si si-printer mr-1"></i> Print Invoice
+                    </button>
+                </div>
+            </div>
+            <div class="block-content">
+                <div class="p-sm-4 p-xl-7">
+                    <!-- Invoice Info -->
+                    <div class="row mb-4">
+                        <!-- Company Info -->
+                        <div class="col-6 font-size-sm">
+                            <p class="h3">Company</p>
+                            <address>
+                                Street Address<br>
+                                State, City<br>
+                                Region, Postal Code<br>
+                                ltd@example.com
+                            </address>
+                        </div>
+                        <!-- END Company Info -->
+
+                        <!-- Client Info -->
+                        <div class="col-6 text-right font-size-sm">
+                            <p class="h3">
+                                {{items.0.purchase.customer.firstname}},{{items.0.purchase.customer.lastname}}
+                            </p>
+                            <address>
+                                Street Address<br>
+                                State, City<br>
+                                Region, Postal Code<br>
+                                ctr@example.com
+                            </address>
+                        </div>
+                        <!-- END Client Info -->
+                    </div>
+                    <!-- END Invoice Info -->
+
+                    <!-- Table -->
+                    <div class="table-responsive push">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 60px;"></th>
+                                    <th>Product</th>
+                                    <th class="text-center" style="width: 90px;">Qnt</th>
+                                    <th class="text-right" style="width: 120px;">Unit</th>
+                                    <th class="text-right" style="width: 120px;">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                    <tr>
+                                        <td class="text-center">{{forloop.counter}}</td>
+                                        <td>
+                                            <p class="font-w600 mb-1">{{item.product.name}}</p>
+                                            <div class="text-muted">Product description</div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-primary">{{item.qty}}</span>
+                                        </td>
+                                        <td class="text-right">{{item.unit_price}}</td>
+                                        <td class="text-right">{{item.amount}}</td>
+                                    </tr>
+                                
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="4" class="font-w600 text-right">Subtotal</td>
+                                    <td class="text-right">{{items.0.purchase.total_price}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="font-w600 text-right">Vat Rate</td>
+                                    <td class="text-right">0%</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="font-w600 text-right">Vat Due</td>
+                                    <td class="text-right">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="font-w700 text-uppercase text-right bg-body-light">Total Due</td>
+                                    <td class="font-w700 text-right bg-body-light">{{items.0.purchase.total_price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END Table -->
+
+                    <!-- Footer -->
+                    <p class="font-size-sm text-muted text-center py-3 my-3 border-top">
+                        Thank you very much for doing business with us. We look forward to working with you again!
+                    </p>
+                    <!-- END Footer -->
+                </div>
+            </div>
+        </div>
+        <!-- END Invoice -->
+    </div>
+    <!-- END Page Content -->
+
+    
+
+{% endblock %}
+                    

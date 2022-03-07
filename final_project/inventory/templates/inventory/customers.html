@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %} Customers {% endblock %}
+
+{% block body %}
+
+<!-- Dynamic Table with Export Buttons -->
+<div class="block block-rounded">
+    <div class="block-header">
+        <button class="btn btn-outline-success mr-1 mb-3">
+            <i class="fa fa-fw fa-plus mr-1"></i>
+            <a href="{% url 'inventory:create_customer' %}">New Customer</a>
+        </button>
+    </div>
+    <div class="block-content block-content-full">
+        <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+        <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 80px;">#</th>
+                    <th>First Name</th>
+                    <th class="d-none d-sm-table-cell" style="width: 30%;">Last Name</th>
+                    <th class="d-none d-sm-table-cell" style="width: 15%;">Phone</th>
+                    <th style="width: 15%;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                    <tr>
+                        <td class="text-center font-size-sm">{{forloop.counter}}</td>
+                        <td class="font-w600 font-size-sm">
+                            <a href="#">{{customer.firstname}}</a>
+                        </td>
+                        <td class="d-none d-sm-table-cell font-size-sm">
+                            <em class="text-muted">{{customer.lastname}}</em>
+                        </td>
+                        <td class="d-none d-sm-table-cell">
+                            <span class="badge badge-success">{{customer.phone}}</span>
+                        </td>
+                        
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a class="btn btn-sm btn-alt-primary" href="{% url 'inventory:update_customer' customer.id %}">
+                                    <i class="fa fa-fw fa-pencil-alt"></i>
+                                </a>
+                                <a class="btn btn-sm btn-alt-primary" href="{% url 'inventory:delete_customer' customer.id %}">
+                                    <i class="fa fa-fw fa-times"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END Dynamic Table with Export Buttons -->
+{% endblock %}
