@@ -2,7 +2,7 @@
 ## Description
 - A store Management app built as the final project at Byte Academy bootcamp
 
-#### Technolgies and Languages Used
+#### Technologies and Languages Used
 * Python
 * Django
 * HTML5
